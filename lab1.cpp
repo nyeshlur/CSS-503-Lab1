@@ -25,7 +25,6 @@ void recursive_creation(int leaves)
         pids.push(getpid()); 
 
         int leftPID = fork(); // fork a left child 
-        cout << "got here" << endl;
         wait(&leftStatus);
         recursive_creation(leaves - 1);
 
@@ -48,8 +47,7 @@ void recursive_creation(int leaves)
    { // I'm a leaf process 
        while(pids.size() > 0)
        {  // print out a list of my ascendants 
-       cout << "got there" << endl;
-           cout << pids.front() << " "; 
+           //cout << pids.front() << " "; 
            pids.pop( ); 
        } 
 
