@@ -22,7 +22,7 @@ void recursive_creation(int leaves)
 
    { 
        pids.push(getpid()); 
-       // fork a left child 
+       fork();// fork a left child 
        // fork a right child 
     
        // wait for one of the children 
