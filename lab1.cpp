@@ -11,7 +11,7 @@ g++ -g -std=c++11 -o myprog lab1.cpp
 #include <sys/types.h> // fork, wait 
 #include <sys/wait.h>  // wait 
 #include <unistd.h>    // fork 
-#include <stdlib.h> // for exit  
+#include <stdlib.h> // for exit
 
 
 using namespace std; 
