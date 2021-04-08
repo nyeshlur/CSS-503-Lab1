@@ -18,36 +18,33 @@ queue<int> pids;      // stores a list of processes from the parent to a leaf pr
 
 void recursive_creation(int leaves) 
 {
-    int leftStatus, rightStatus;
     if (leaves > 1)
-
-   { 
+    { 
+        int subLeaves;
+        subLeaves = leaves / 2;
         pids.push(getpid()); 
-
+        int status;
         int leftPID = fork(); // fork a left child 
-        wait(&leftStatus);
-        recursive_creation(leaves - 1);
-
-       // int rightPID = fork(); // fork a right child
-        //wait(&rightStatus);
-        
-        /*
-        int rightPID = fork(); // fork a right child 
-        //pids.push(rightPID);
-        recursive_creation(leaves - 1);
-        wait(&rightStatus);
-        */
-
-       
+        if(leftPID == 0) { //if you are in the child process
+            subLeaves = subLeaves + (leaves % 2);
+            recursive_creation(subLeaves);
+        } else { //if you are in the parent process
+            wait(&status);
+            int rightPID = fork(); // fork a right child
+            if(rightPID == 0) {
+                recursive_creation(subLeaves);
+            } else {
+                wait(&status);
+            }
+        }
 
         exit(0); 
-
-   } 
-   else
+        
+    } else
    { // I'm a leaf process 
        while(pids.size() > 0)
        {  // print out a list of my ascendants 
-           //cout << pids.front() << " "; 
+           cout << pids.front() << " "; 
            pids.pop( ); 
        } 
 
