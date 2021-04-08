@@ -1,6 +1,9 @@
 /*
 Lab 1, completed by Nayana Yeshlur and Jenny Wilson.
 Starter code provided by Professor Dimpsey.
+
+g++ -g -std=c++11 -o myprog lab1.cpp
+./myprog
 */
 
 #include <iostream>    // cout, cerr 
@@ -39,7 +42,7 @@ void recursive_creation(int leaves)
         }
 
         exit(0); 
-        
+
     } else
    { // I'm a leaf process 
        while(pids.size() > 0)
